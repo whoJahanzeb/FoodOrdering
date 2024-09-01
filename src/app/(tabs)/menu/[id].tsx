@@ -4,19 +4,21 @@ import { Stack, useLocalSearchParams } from "expo-router";
 import products from "@assets/data/products";
 import { defaultPizzaImage } from "@/components/ProductListItem";
 import Button from "@/components/Button";
+import { useCart } from "@/providers/CartProvider";
+import { PizzaSize } from "@/types";
 
-const sizes = ["S", "M", "L", "XL"];
+const sizes: PizzaSize[] = ["S", "M", "L", "XL"];
 
 const ProductDetailScreen = () => {
-  const [selectSize, setSelectSize] = useState("M");
+  const { addCartItem } = useCart();
+  const [selectSize, setSelectSize] = useState<PizzaSize>("M");
   const { id } = useLocalSearchParams();
   const product = products.find((p) => p.id.toString() === id);
   if (!product) {
     return <Text>Product not found</Text>;
   }
   const addToCart = () => {
-    const params = `id=${id}$size=${selectSize}`;
-    console.warn(params);
+    addCartItem(product, selectSize);
   };
   return (
     <View className="bg-white flex-1 p-4">
