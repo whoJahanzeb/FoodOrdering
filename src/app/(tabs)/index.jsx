@@ -1,17 +1,11 @@
 import products from "@/assets/data/products";
-import { View, Text, Image } from "react-native";
-
-const product = products[0];
-export default function TabOneScreen() {
+import { ScrollView } from "react-native";
+import { ProductListItem } from "../../components/ProductListItem";
+export default function MenuScreen() {
   return (
-    <View className="bg-white p-2 rounded-lg">
-      <Image
-        source={{ uri: product.image }}
-        resizeMode="contain"
-        className="w-[100%] aspect-square"
-      />
-      <Text>{product.name}</Text>
-      <Text>{product.price}</Text>
-    </View>
+    <ScrollView>
+      <ProductListItem product={products[5]} />
+      <ProductListItem product={products[1]} />
+    </ScrollView>
   );
 }
