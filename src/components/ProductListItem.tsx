@@ -7,7 +7,7 @@ type ProductListItemProp = {
 };
 export const ProductListItem = ({ product }: ProductListItemProp) => {
   return (
-    <View className="bg-white p-2 rounded-lg">
+    <View className="bg-white p-2 rounded-lg flex-1">
       <Image
         source={{ uri: product.image || defaultPizzaImage }}
         resizeMode="contain"

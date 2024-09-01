@@ -1,11 +1,14 @@
 import products from "@assets/data/products";
-import { ScrollView } from "react-native";
+import { FlatList, ScrollView } from "react-native";
 import { ProductListItem } from "../../components/ProductListItem";
 export default function MenuScreen() {
   return (
-    <ScrollView>
-      <ProductListItem product={products[5]} />
-      <ProductListItem product={products[1]} />
-    </ScrollView>
+    <FlatList
+      data={products}
+      renderItem={({ item }) => <ProductListItem product={item} />}
+      numColumns={2}
+      contentContainerStyle={{ gap: 10, padding: 10 }}
+      columnWrapperStyle={{ gap: 10 }}
+    />
   );
 }
